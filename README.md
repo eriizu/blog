@@ -1,4 +1,4 @@
-# On my quest to a functioning blog generator
+# On my quest for a functioning blog generator
 
 This repository seems to be the minimum viable code for a Hugo site using tailwindcss (with JIT and watch mode).
 
