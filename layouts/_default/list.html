@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8" />
+	<title>{{.Site.Title}}</title>
+	<meta name="description" content="Potate - TEMPLATE_CODE" />
+	<meta name="author" content="eriizu" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+	<div class="mt-10 sm:mx-10 mx-3 max-w-3xl">
+		<h1 class="text-3xl">{{.Site.Title}}</h1>
+		<nav class="flex flex-row">
+			<div class="mr-4">posts</div>
+			<div class="mr-4">about</div>
+		</nav>
+
+		{{ range .Pages }}
+		<section class="mt-4">
+			<h2 class="text-2xl">{{ .Title }}</h2>
+			<p class="text-gray-600">{{ .Date.Format "2006/01/02" }}
+				&nbsp;•&nbsp;
+				{{ range (.GetTerms "categories") }}
+				<a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+				{{ end }}
+			</p>
+			<p class="text-justify">{{ .Summary }}</p>
+
+		</section>
+		{{ end }}
+
+		<section class="mt-4">
+			<h2 class="text-2xl">Construction d'un blog avec Hugo</h2>
+			<p class="text-gray-600">2021-05-18&nbsp; • &nbsp;catg</p>
+			<p class="text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non quod aut
+				delectus vitae
+				doloremque temporibus aspernatur iste minima expedita, aliquid blanditiis voluptates
+				enim. Id maxime expedita, veniam sit sint laudantium.
+
+		</section>
+		<section class="mt-4">
+			<h2 class="text-2xl">Découverte de tailwindcss</h2>
+			<p class="text-gray-600">2021-05-18&nbsp; • &nbsp;catg</p>
+			<p class="text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non quod aut
+				delectus vitae
+				doloremque temporibus aspernatur iste minima expedita, aliquid blanditiis voluptates
+				enim. Id maxime expedita, veniam sit sint laudantium.
+
+		</section>
+	</div>
+</body>
+
+</html>
