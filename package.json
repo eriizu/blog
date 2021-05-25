@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "dev": "TAILWIND_MODE=watch NODE_ENV=development postcss tailwind.scss -o static/styles.css -w",
+    "build:dev": "TAILWIND_MODE=build NODE_ENV=development postcss tailwind.scss -o static/styles.css && hugo",
+    "build:prod": "TAILWIND_MODE=build NODE_ENV=production postcss tailwind.scss -o static/styles.css && hugo"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.3.0",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.1.2"
+  }
+}
