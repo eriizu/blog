@@ -1,3 +1,26 @@
-baseURL      = "http://example.org/"
+baseURL      = "https://blog.eriizu.fr/"
 languageCode = "fr-fr"
 title        = "~eriizu"
+
+[markup]
+defaultMarkdownHandler = "blackfriday"
+	[markup.highlight]
+	anchorLineNos      = false
+	codeFences         = true
+	guessSyntax        = false
+	hl_Lines           = ""
+	lineAnchors        = ""
+	lineNoStart        = 1
+	lineNos            = true
+	lineNumbersInTable = true
+	noClasses          = true
+	style              = "dracula"
+	tabWidth           = 8
+
+	[markup.blackfriday]
+	smartypants           = true
+	angledQuotes          = true
+	smartypantsQuotesNBSP = true
+	# [blackfriday]
+# smartypants  = true
+# angledQuotes = true

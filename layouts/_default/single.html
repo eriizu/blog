@@ -5,14 +5,22 @@
 	<meta charset=utf-8>
 	<title>{{ .Page.Title }}</title>
 	<link rel='stylesheet' href='/styles.css'>
-	</style>
 </head>
 
 <body>
-	<h1>{{.Site.Title}}</h1>
-	<h2>{{ .Page.Title}}</h2>
-	{{ .Page.Content }}
-	<p><a href='/'>back</a></p>
+	<div class="mt-10 sm:mx-10 mx-3 max-w-3xl">
+		<h1 class="text-3xl">{{.Page.Title}}</h1>
+		<nav class="flex flex-row">
+			<div class="mr-4">{{ .Site.Title }}</div>
+			<div class="mr-4">publications</div>
+			<div class="mr-4">à propos</div>
+		</nav>
+
+		<article class="mt-8">
+			{{ .Page.Content }}
+		</article>
+		<p><a href='/'>back</a></p>
+	</div>
 </body>
 
 </html>
