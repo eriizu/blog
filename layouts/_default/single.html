@@ -9,12 +9,7 @@
 
 <body>
 	<div class="mt-10 sm:mx-10 mx-3 max-w-3xl">
-		<h1 class="text-3xl">{{.Page.Title}}</h1>
-		<nav class="flex flex-row">
-			<div class="mr-4">{{ .Site.Title }}</div>
-			<div class="mr-4">publications</div>
-			<div class="mr-4">à propos</div>
-		</nav>
+		{{ partial "body/nav.html" . }}
 
 		<article class="mt-8">
 			{{ .Page.Content }}

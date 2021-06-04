@@ -12,12 +12,7 @@
 
 <body>
 	<div class="mt-10 sm:mx-10 mx-3 max-w-3xl">
-		<h1 class="text-3xl">{{.Site.Title}}</h1>
-		<nav class="flex flex-row">
-			<div class="mr-4">publications</div>
-			<div class="mr-4">à propos</div>
-		</nav>
-
+		{{ partial "body/nav.html" . }}
 		{{ range .Pages }}
 		<section class="mt-4">
 			<a href="{{ .Permalink }}">
