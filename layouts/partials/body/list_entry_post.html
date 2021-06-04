@@ -1,0 +1,14 @@
+<section class="mt-4">
+	<a href="{{ .Permalink }}">
+		<h2 class="text-2xl">{{ .Title }}</h2>
+	</a>
+	<p class="text-gray-600">{{ .Date.Format "2006/01/02" }}
+		&nbsp;•&nbsp;
+		{{ range (.GetTerms "categories") }}
+		<a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+		{{ end }}
+	</p>
+
+	<div class="mt-2 text-gray-500 text-justify">{{ .Summary }}</div>
+
+</section>

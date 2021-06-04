@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  p {
-    @apply mt-4;
+  article p {
+    @apply mt-4 text-justify;
   }
 }
 

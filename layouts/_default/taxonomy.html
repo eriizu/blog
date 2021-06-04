@@ -1,33 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-	<meta charset="utf-8" />
-	<title>{{.Title}} - {{.Site.Title}} </title>
-	<meta name="description" content="Potate - TEMPLATE_CODE" />
-	<meta name="author" content="eriizu" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="/styles.css" />
-</head>
+{{ partial "head/index.html" . }}
 
 <body>
-	<div class="mt-10 sm:mx-10 mx-3 max-w-3xl">
+	<div class="mt-14 sm:mx-14 mx-3 max-w-3xl">
 		{{ partial "body/nav.html" . }}
 
 		{{ range .Pages }}
-		<section class="mt-4">
-			<a href="{{ .Permalink }}">
-				<h2 class="text-2xl">{{ .Title }}</h2>
-			</a>
-			<p class="text-gray-600">{{ .Date.Format "2006/01/02" }}
-				&nbsp;•&nbsp;
-				{{ range (.GetTerms "categories") }}
-				<a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
-				{{ end }}
-			</p>
-			<p class="text-justify">{{ .Summary }}</p>
-
-		</section>
+		{{ partial "body/list_entry_post.html" . }}
 		{{ end }}
 
 	</div>

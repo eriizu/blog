@@ -22,6 +22,8 @@ categories:
 
 « SINON EST-CE QUE VOUS ÊTES CHAUDS CE SOIR »
 
+<!--more-->
+
 ```c
 int main(void) {
 	while (i) {
