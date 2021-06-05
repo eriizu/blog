@@ -1,0 +1,14 @@
+services:
+  web:
+    image: eriizu/blog
+    restart: unless-stopped
+    # volumes:
+    #   - "./data/plume/static/media:/app/static/media"
+    # ports:
+    #   - "127.0.0.1:7878:7878"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.blog.rule=Host(`blog.eriizu.fr`)"
+      - "traefik.http.routers.blog.entrypoints=websecure"
+      - "traefik.http.routers.blog.tls.certresolver=le"
+      - "traefik.http.services.blog.loadbalancer.server.port=80"
