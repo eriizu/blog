@@ -3,8 +3,27 @@
 @tailwind utilities;
 
 @layer base {
-  article p {
+  article > p {
     @apply mt-4 text-justify;
+  }
+  /*! purgecss ignore */
+  article blockquote {
+    @apply border shadow mt-4 px-4 py-4 rounded-lg;
+  }
+  article > blockquote {
+    @apply shadow-md;
+  }
+  article h1 {
+    @apply text-4xl mt-8;
+  }
+  article h2 {
+    @apply text-3xl mt-8;
+  }
+  article h3 {
+    @apply text-2xl mt-8;
+  }
+  article h4 {
+    @apply text-xl mt-8;
   }
 }
 
@@ -16,7 +35,7 @@
 
   /*! purgecss ignore */
   .highlight {
-    @apply mt-4 p-4 shadow-2xl;
+    @apply mt-4 p-4 shadow-2xl rounded-lg;
     background-color: #282a36;
   }
 

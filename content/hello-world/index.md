@@ -1,28 +1,27 @@
 ---
-title: "Hello World"
+title: "Test du site avec hugo"
 date: 2021-05-25T11:13:12+02:00
 draft: false
 tags:
-  - .vimrc
-  - plugins
-  - spf13-vim
-  - vim
-description:
-  spf13-vim is a cross platform distribution of vim plugins and resources
-  for Vim.
+  - demo
+  - markdown
+description: Il s'agit d'une démonstration des styles qui sont disponibles sur le blog, à partir d'un article markdown.
 
 categories:
-  - Development
-  - VIM
+  - Meta
 ---
 
-# Test du site avec hugo
+# Guillemets
 
-"Ça a l'air plus simple comme ça."
+"Ce sont des guillemets droits, sans espaces du tout."
 
-« SINON EST-CE QUE VOUS ÊTES CHAUDS CE SOIR »
+« Ce sont des guillemets français, avec espaces sécables. »
 
 <!--more-->
+
+# Code
+
+Voici comment faire du code qui ne compile pas en C. C'est beau.
 
 ```c
 int main(void) {
@@ -32,6 +31,26 @@ int main(void) {
 	}
 }
 ```
+
+# Quote
+
+Je voulais aussi voir si j'avais des block quotes.
+
+> Genre ce truc là
+
+> > ou ça ?
+> >
+> > > ou ça ?
+> > >
+> > > > ou ça ?
+> > > >
+> > > > > ou ça ?
+> > > > >
+> > > > > > ou ça ?
+> > > > > >
+> > > > > > > ou ça ?
+
+# Lorem
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id fermentum orci. Mauris sed tortor fermentum, euismod felis non, semper ante. Morbi velit nibh, porttitor ac quam et, aliquam iaculis ipsum. Integer nunc arcu, faucibus a pellentesque vitae, efficitur egestas nunc. Curabitur lacinia sodales neque, non tincidunt ex venenatis a. Nunc hendrerit, quam sed finibus pharetra, velit nulla dictum dui, vitae aliquam urna leo a eros. Quisque condimentum ultricies mauris, sed varius tortor tincidunt vel.
 
