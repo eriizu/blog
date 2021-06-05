@@ -6,7 +6,11 @@
   article > p {
     @apply mt-4 text-justify;
   }
+
   /*! purgecss ignore */
+  p > code {
+    @apply border shadow-sm text-sm;
+  }
   article blockquote {
     @apply border shadow mt-4 px-4 py-4 rounded-lg;
   }
