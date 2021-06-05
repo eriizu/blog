@@ -4,8 +4,16 @@
 {{ partial "head/index.html" . }}
 
 <body>
-	<div class="mt-14 sm:mx-14 mx-3 max-w-3xl">
+	<div class="centered-base">
 		{{ partial "body/nav.html" . }}
+
+		<!-- article header -->
+		<div class="mt-8">
+			<h1 class="text-3xl font-bold">{{ .Title }}</h1>
+			<p>publié le&nbsp;: {{ .Date.Format "2006-01-02" }}</p>
+			<p>catégorie·s&nbsp;: {{ range (.GetTerms "categories") }}<a
+					href="{{ .Permalink }}">{{ .LinkTitle }}</a>{{ end }}</p>
+		</div>
 
 		<article class="mt-8">
 			{{ .Page.Content }}

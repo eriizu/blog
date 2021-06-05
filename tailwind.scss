@@ -42,8 +42,18 @@
     @apply mt-4 p-4 shadow-2xl rounded-lg;
     background-color: #282a36;
   }
+  .centered-base {
+    @apply mt-14 sm:mx-14 mx-3 max-w-3xl;
+  }
 
   .caca {
     @apply mt-11;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
