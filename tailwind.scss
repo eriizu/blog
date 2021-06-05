@@ -9,6 +9,12 @@
 }
 
 @layer components {
+  /*! purgecss ignore */
+  .highlight > pre:nth-child(1) {
+    @apply overflow-x-auto;
+  }
+
+  /*! purgecss ignore */
   .highlight {
     @apply mt-4 p-4 shadow-2xl;
     background-color: #282a36;
