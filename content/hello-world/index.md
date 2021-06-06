@@ -8,7 +8,7 @@ tags:
 description: Il s'agit d'une démonstration des styles qui sont disponibles sur le blog, à partir d'un article markdown.
 
 categories:
-  - Meta
+  - meta
 ---
 
 # Guillemets

@@ -3,7 +3,7 @@ title: "Formatage des titres"
 date: 2021-05-25T11:16:01+02:00
 draft: false
 categories:
-  - Meta
+  - meta
 tags:
   - demo
   - markdown
