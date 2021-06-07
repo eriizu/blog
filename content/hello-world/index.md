@@ -11,7 +11,7 @@ categories:
   - meta
 ---
 
-![Example image](/static/image.png)
+![Example image](/![Example image](/image.png))
 
 # Guillemets
 
