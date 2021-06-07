@@ -11,6 +11,8 @@ categories:
   - meta
 ---
 
+![Example image](/static/image.png)
+
 # Guillemets
 
 "Ce sont des guillemets droits, sans espaces du tout."
