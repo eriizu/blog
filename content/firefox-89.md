@@ -12,7 +12,7 @@ tags:
 
 ## Avant propos
 
-Je metterais cet article au fur et à mesure de mes découvertes. Il me sert notemment à garder trace des modifications fonctionnelles que j'ai pu faire.
+Je mettrai cet article à jour, au fur et à mesure de mes découvertes. Il me sert notamment à garder trace des modifications fonctionnelles que j'ai pu faire.
 
 ## Intro
 
