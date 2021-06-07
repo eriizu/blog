@@ -1,6 +1,6 @@
 ---
 title: "Firefox 89 et ses problèmes"
-date: 2021-06-7T11:36:01+02:00
+date: 2021-06-07T11:36:01+02:00
 draft: false
 categories:
   - article
