@@ -10,6 +10,10 @@ tags:
   - rant
 ---
 
+## Avant propos
+
+Je metterais cet article au fur et à mesure de mes découvertes. Il me sert notemment à garder trace des modifications fonctionnelles que j'ai pu faire.
+
 ## Intro
 
 Si vous vous servez de Firefox, et que vous le gardez à jour où vous intéressez à son actualité, vous avez surement entendu parler d'une nouvelle interface graphique.
@@ -49,3 +53,5 @@ fi
 ```
 
 > C'est vraiment nul comme façon de vérifier si on est sur Wayland, et je vais chercher une meilleure solution, qui ne soit pas propre à gnome, et qui ne fasse pas usage d'un `grep` sur `ps aux`.
+
+J'ai trouvé cette solution sur le [wiki arch](https://wiki.archlinux.org/title/Firefox#Wayland) et [stack exchange](https://unix.stackexchange.com/a/237586).
