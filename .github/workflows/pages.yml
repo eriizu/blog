@@ -15,7 +15,7 @@ jobs:
           submodules: recursive # Fetch the Docsy theme
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
       - name: Checkout LFS objects
-        run: git lfs checkout
+        run: git lfs checkout && git lfs fetch
 
       - name: Setup hugo
         uses: peaceiris/actions-hugo@v2
