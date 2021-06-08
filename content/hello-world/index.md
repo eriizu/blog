@@ -11,6 +11,8 @@ categories:
   - meta
 ---
 
+![Example image](/meow_wobble.gif)
+
 # Guillemets
 
 "Ce sont des guillemets droits, sans espaces du tout."
