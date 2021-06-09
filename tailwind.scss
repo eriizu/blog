@@ -29,6 +29,15 @@
   article h4 {
     @apply text-xl font-semibold mt-8;
   }
+  article a {
+    @apply underline text-purple-400;
+  }
+  article a:visited {
+    @apply underline text-gray-500;
+  }
+  article a:hover {
+    @apply underline text-purple-500;
+  }
 }
 
 @layer components {
