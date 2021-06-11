@@ -7,7 +7,11 @@ categories:
 tags:
   - firefox
   - fixes
+  - wayland
+  - gnome
+  - webrender
   - rant
+summary: Résulutions de problèmes courrants avec la version 89 de Firefox, pour les utilisatrices et utilisateurs de Wayland ou de GPU Nvidia.
 ---
 
 ## Avant propos
