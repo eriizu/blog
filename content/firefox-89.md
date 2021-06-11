@@ -1,6 +1,6 @@
 ---
 title: "Firefox 89 et ses problèmes"
-date: 2021-06-07T11:36:01+02:00
+date: 2021-06-11T22:41:00+02:00
 draft: false
 categories:
   - article
@@ -16,29 +16,20 @@ Je mettrai cet article à jour, au fur et à mesure de mes découvertes. Il me s
 
 ## Intro
 
-Si vous vous servez de Firefox, et que vous le gardez à jour où vous intéressez à son actualité, vous avez surement entendu parler d'une nouvelle interface graphique.
+Si vous vous servez de Firefox et l'avez mis à jour très récement, vous avez surement remarqué qu'il y a une nouvelle interface activée par défaut. Vous avez aussi peut-être constaté d'importants ralentissements pendant votre navigation.
 
-Cette nouvelle interface est devenue l'option par défaut dans la mise à jour 89 de Firefox.
+Dans l'essence, ces ralentissements n'ont pas l'air d'être causés par la nouvelle mise à jour mais par:
 
-Le problème c'est qu'il ne s'agit pas que d'un changement cosmétique, mais aussi d'un changement de moteur ? backend ? Un changement de code plus profond que juste du CSS en tout cas.
+- le fait d'être sur Wayland, mais de ne pas avoir forcé firefox à **ne pas** utiliser `xwayland` ;
+- le fait d'être sur X avec ou sur GPU Nvidia, et d'utiliser le nouveau moteur de rendu `webrender` qui est désormais l'option par défaut.
 
-<!--more-->
+## Solutions
 
-## Le problèmes rencontrés
+### Wayland
 
-De fait, je ne suis pas la seule personne à mettre rendue compte de ralentissements importants lorsque je lisais des vidéos ou suivais des diffusions en direct. Des ralentissements qui ne subsistent pas sur la version ESR (une version ne recevant presque que de mise à jour de sécurité)
+Pour les utilisateur·rice·s de Wayland, une solution est de forcer Firefox à se servir de `wayland` plutôt que de la couche de compatibilité `xwayland`.
 
-J'ai même fini par me rendre compte de ralentissements sur des sites en HTML/CSS pur.
-
-## Une solution pour les utilisateur·rice·s de Wayland et GNOME
-
-Utilisant Wayland sur une de mes machines, j'ai voulu voir si Firefox était compatible avec et faisait bon usage du compositeur. J'ai pu voir, que par défaut, il va utiliser `xwayland` alors qu'il est capable de communiquer directement avec `wayland`.
-
-Passer de l'un à l'autre m'a au moins permis de récupérer de meilleures performances sur les sites en HTML/CSS pur.
-La navigation avec un flux en direct ou une vidéo youtube en parallèle est toujours bien impactée, mais un petit peu moins.
-Comme quoi, utiliser le bon compositeur ça peut aider !
-
-Pour faire utiliser Wayland j'ai ajouté le code suivant dans mon `~/.profile`.
+Pour ce faire, je suis tombée sur le [wiki arch](https://wiki.archlinux.org/title/Firefox#Wayland) et [stack exchange](https://unix.stackexchange.com/a/237586) et j'en ai retenu qu'il faillait ajouter le contenu suivant à mon `~/.profile` :
 
 ```sh
 WAY=$(ps -aux | head -n -1 | grep "/usr/bin/gnome-shell --wayland")
@@ -46,12 +37,32 @@ WAY=$(ps -aux | head -n -1 | grep "/usr/bin/gnome-shell --wayland")
 if [ -z "$WAY" ]; then
     echo X11
 else
-    export GDK_BACKEND=wayland
-    export CLUTTER_BACKEND=wayland
+    # export GDK_BACKEND=wayland
+    # export CLUTTER_BACKEND=wayland
     export MOZ_ENABLE_WAYLAND=1
 fi
 ```
 
-> C'est vraiment nul comme façon de vérifier si on est sur Wayland, et je vais chercher une meilleure solution, qui ne soit pas propre à gnome, et qui ne fasse pas usage d'un `grep` sur `ps aux`.
+Je n'ai pas cherché à faire mieux que la personne sur stackexchange pour discriminer Wayland et X. Celle-ci est malheureusement propre à Gnome. Déso.
 
-J'ai trouvé cette solution sur le [wiki arch](https://wiki.archlinux.org/title/Firefox#Wayland) et [stack exchange](https://unix.stackexchange.com/a/237586).
+Les deux lignes commentées peuvent servir à forcer GDK et Clutter à se servir de Wayland, mais cela cause des erreurs chez certain·e·s, donc je vous invite à être prudent·e·s avec. Surtout que j'ai absolument pas recherché leurs effets vu que ça n'était pas vraiment mon but ici.
+
+### X & Nvidia | Windows
+
+Dans `about:config`, permuter `gfx.webrender.force-disabled` pour qu'elle soit vraie. Pour frocer Firefox à ne pas se servir du nouveau moteur de rendu.
+
+Tel que décrit dans ce [commentaire reddit](https://www.reddit.com/r/firefox/comments/ns0n5s/version_89_very_slow_lot_of_lag/h0jvpiv?utm_source=share&utm_medium=web2x&context=3).
+
+Autrement il conseille aussi de désactiver l'accélération graphique. Ce que vous pouvez tester.
+
+## Conclusion
+
+Dommage que Firefox introduise par défaut des changements qui impactent vraiment beaucoup les utilisateurs finaux.
+
+Pour certains ce sera des heures de recherches et de débrouillardise qui sera nécessaire à retrouver les mêmes performances qu'avant la mise-à-jour. Peut-être que leur plan directeur c'est de forcer tous les projets graphiques à finalement s'entendre pour faire marcher l'accelération matérielle dans des configurations variées ; ou encore Wayland sur des GPU Nvidia.
+
+Bien que la compatibilité Nvidia soit pas le seul problème avec Wayland. (Ça me manque de pouvoir partager mon écran.)
+
+Dans tous les cas le comportement de Firefox (le logiciel comme l'entitée) reste trop obscur pour la plupart des utilisateur·rice·s, moi y compris.
+
+~ Élise
