@@ -24,9 +24,9 @@ Si vous vous servez de Firefox et l'avez mis à jour très récement, vous avez 
 
 Dans l'essence, ces ralentissements n'ont pas l'air d'être causés par la nouvelle mise à jour mais par :
 
-— le fait d'être sur Wayland, mais de ne pas avoir forcé firefox à **ne pas** utiliser `xwayland` ;
+- le fait d'être sur Wayland, mais de ne pas avoir forcé firefox à **ne pas** utiliser `xwayland` ;
 
-— le fait d'être sur X avec ou sur GPU Nvidia, et d'utiliser le nouveau moteur de rendu `webrender` qui est désormais l'option par défaut.
+- le fait d'être sur X avec ou sur GPU Nvidia, et d'utiliser le nouveau moteur de rendu `webrender` qui est désormais l'option par défaut.
 
 ## Solutions
 

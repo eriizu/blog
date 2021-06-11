@@ -11,7 +11,7 @@
   p > code {
     @apply border shadow-sm text-sm;
   }
-  article blockquote {
+  /*  article blockquote {
     @apply border shadow mt-4 px-4 py-4 rounded-lg;
   }
   article > blockquote {
@@ -37,7 +37,7 @@
   }
   article a:hover {
     @apply underline text-purple-700;
-  }
+  }*/
 }
 
 @layer components {
@@ -48,7 +48,7 @@
 
   /*! purgecss ignore */
   .highlight {
-    @apply mt-4 p-4 shadow-2xl rounded-lg;
+    @apply shadow-xl rounded-lg;
     background-color: #282a36;
   }
   .centered-base {
