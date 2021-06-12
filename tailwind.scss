@@ -3,15 +3,16 @@
 @tailwind utilities;
 
 @layer base {
-  article > p {
-    @apply mt-4 text-justify;
-  }
-
   /*! purgecss ignore */
   p > code {
     @apply border shadow-sm text-sm;
   }
-  /*  article blockquote {
+  /*
+    article > p {
+    @apply mt-4 text-justify;
+  }
+
+  article blockquote {
     @apply border shadow mt-4 px-4 py-4 rounded-lg;
   }
   article > blockquote {
@@ -52,7 +53,7 @@
     background-color: #282a36;
   }
   .centered-base {
-    @apply mt-14 sm:mx-14 mx-3 max-w-3xl;
+    @apply mt-4 mx-4 md:mx-auto md:mt-14 max-w-3xl;
   }
 
   .caca {
