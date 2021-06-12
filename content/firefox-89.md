@@ -54,7 +54,7 @@ Les deux lignes commentées peuvent servir à forcer GDK et Clutter à se servir
 
 ### X & Nvidia | Windows
 
-Dans `about:config`, permuter `gfx.webrender.force-disabled` pour qu'elle soit vraie. Pour frocer Firefox à ne pas se servir du nouveau moteur de rendu.
+Naviguez sur `about:config`, cherchez et permutez `gfx.webrender.force-disabled` de façon à ce qu'elle soit vraie. Pour frocer Firefox à ne pas se servir du nouveau moteur de rendu.
 
 Tel que décrit dans ce [commentaire reddit](https://www.reddit.com/r/firefox/comments/ns0n5s/version_89_very_slow_lot_of_lag/h0jvpiv?utm_source=share&utm_medium=web2x&context=3).
 
