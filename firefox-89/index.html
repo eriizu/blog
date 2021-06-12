@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang=fr>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Firefox 89 et ses problèmes</title>
+	<meta name="description" content="Journal personnel de découverte d'outils et de réalisation de projets." />
+	<meta name="author" content="eriizu" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="/styles.css" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+</head>
+<a name="top"></a>
+
+
+<body>
+	<div class="centered-base">
+		<h1 class="text-3xl font-bold text-gradient bg-gradient-to-r from-pink-400 to-blue-400 max-w-max">
+	~eriizu・エリーズ
+</h1>
+<nav class="flex flex-row mb-8 space-x-4">
+
+	<a href="/">
+		publications
+	</a>
+	
+	<a href="https://github.com/eriizu/blog" target="_blank" rel="noopener">
+		code source
+	</a>
+	<a rel="me noopener" href="https://potate.space/@elise" target="_blank">masto</a>
+</nav>
+
+
+		
+		<div class="mt-8">
+			<h1 class="text-2xl font-bold">Firefox 89 et ses problèmes</h1>
+			<p>publié le&nbsp;: 2021-06-11</p>
+			<p>catégorie·s&nbsp;: <a
+					href="https://blog.eriizu.fr/categories/article/">article</a></p>
+		</div>
+
+		<article class="mt-8 prose max-w-none">
+			
+
+<h2 id="avant-propos">Avant propos</h2>
+
+<p>Je mettrai cet article à jour, au fur et à mesure de mes découvertes. Il me sert notamment à garder trace des modifications fonctionnelles que j&rsquo;ai pu faire.</p>
+
+<h2 id="intro">Intro</h2>
+
+<p>Si vous vous servez de Firefox et l&rsquo;avez mis à jour très récement, vous avez surement remarqué qu&rsquo;il y a une nouvelle interface activée par défaut. Vous avez aussi peut-être constaté d&rsquo;importants ralentissements pendant votre navigation.</p>
+
+<p>Dans l&rsquo;essence, ces ralentissements n&rsquo;ont pas l&rsquo;air d&rsquo;être causés par la nouvelle mise à jour mais par :</p>
+
+<ul>
+<li><p>le fait d&rsquo;être sur Wayland, mais de ne pas avoir forcé firefox à <strong>ne pas</strong> utiliser <code>xwayland</code> ;</p></li>
+
+<li><p>le fait d&rsquo;être sur X avec ou sur GPU Nvidia, et d&rsquo;utiliser le nouveau moteur de rendu <code>webrender</code> qui est désormais l&rsquo;option par défaut.</p></li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<h3 id="wayland">Wayland</h3>
+
+<p>Pour les utilisateur·rice·s de Wayland, une solution est de forcer Firefox à se servir de <code>wayland</code> plutôt que de la couche de compatibilité <code>xwayland</code>.</p>
+
+<p>Pour ce faire, je suis tombée sur le <a href="https://wiki.archlinux.org/title/Firefox#Wayland">wiki arch</a> et <a href="https://unix.stackexchange.com/a/237586">stack exchange</a> et j&rsquo;en ai retenu qu&rsquo;il faillait ajouter le contenu suivant à mon <code>~/.profile</code> :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36"><code class="language-sh" data-lang="sh"><span style="color:#8be9fd;font-style:italic">WAY</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span>ps -aux | head -n -1 | grep <span style="color:#f1fa8c">&#34;/usr/bin/gnome-shell --wayland&#34;</span><span style="color:#ff79c6">)</span>
+
+<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> -z <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$WAY</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">]</span>; <span style="color:#ff79c6">then</span>
+    <span style="color:#8be9fd;font-style:italic">echo</span> X11
+<span style="color:#ff79c6">else</span>
+    <span style="color:#6272a4"># export GDK_BACKEND=wayland</span>
+    <span style="color:#6272a4"># export CLUTTER_BACKEND=wayland</span>
+    <span style="color:#8be9fd;font-style:italic">export</span> <span style="color:#8be9fd;font-style:italic">MOZ_ENABLE_WAYLAND</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">1</span>
+<span style="color:#ff79c6">fi</span></code></pre></div>
+<p>Je n&rsquo;ai pas cherché à faire mieux que la personne sur stackexchange pour discriminer Wayland et X. Celle-ci est malheureusement propre à Gnome. Déso.</p>
+
+<p>Les deux lignes commentées peuvent servir à forcer GDK et Clutter à se servir de Wayland, mais cela cause des erreurs chez certain·e·s, donc je vous invite à être prudent·e·s avec. Surtout que j&rsquo;ai absolument pas recherché leurs effets vu que ça n&rsquo;était pas vraiment mon but ici.</p>
+
+<h3 id="x-nvidia-windows">X &amp; Nvidia | Windows</h3>
+
+<p>Naviguez sur <code>about:config</code>, cherchez et permutez <code>gfx.webrender.force-disabled</code> de façon à ce qu&rsquo;elle soit vraie. Pour frocer Firefox à ne pas se servir du nouveau moteur de rendu.</p>
+
+<p>Tel que décrit dans ce <a href="https://www.reddit.com/r/firefox/comments/ns0n5s/version_89_very_slow_lot_of_lag/h0jvpiv?utm_source=share&amp;utm_medium=web2x&amp;context=3">commentaire reddit</a>.</p>
+
+<p>Autrement il conseille aussi de désactiver l&rsquo;accélération graphique. Ce que vous pouvez tester.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Dommage que Firefox introduise par défaut des changements qui impactent vraiment beaucoup les utilisateurs finaux.</p>
+
+<p>Pour certains ce sera des heures de recherches et de débrouillardise qui sera nécessaire à retrouver les mêmes performances qu&rsquo;avant la mise-à-jour. Peut-être que leur plan directeur c&rsquo;est de forcer tous les projets graphiques à finalement s&rsquo;entendre pour faire marcher l&rsquo;accelération matérielle dans des configurations variées ; ou encore Wayland sur des GPU Nvidia.</p>
+
+<p>Bien que la compatibilité Nvidia soit pas le seul problème avec Wayland. (Ça me manque de pouvoir partager mon écran.)</p>
+
+<p>Dans tous les cas le comportement de Firefox (le logiciel comme l&rsquo;entitée) reste trop obscur pour la plupart des utilisateur·rice·s, moi y compris.</p>
+
+<p>~ Élise</p>
+
+		</article>
+		<a href="#top">
+			<div
+				class="my-8 p-4 rounded-lg bg-gray-800 hover:bg-gradient-to-r from-pink-500 to-blue-500 text-white max-w-max">
+
+				↑ Retour en haut. ↑
+			</div>
+		</a>
+	</div>
+</body>
+
+</html>

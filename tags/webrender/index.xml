@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>webrender on ~eriizu</title>
+    <link>https://blog.eriizu.fr/tags/webrender/</link>
+    <description>Recent content in webrender on ~eriizu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Fri, 11 Jun 2021 22:41:00 +0200</lastBuildDate><atom:link href="https://blog.eriizu.fr/tags/webrender/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Firefox 89 et ses problèmes</title>
+      <link>https://blog.eriizu.fr/firefox-89/</link>
+      <pubDate>Fri, 11 Jun 2021 22:41:00 +0200</pubDate>
+      
+      <guid>https://blog.eriizu.fr/firefox-89/</guid>
+      <description>Résulutions de problèmes courrants avec la version 89 de Firefox, pour les utilisatrices et utilisateurs de Wayland ou de GPU Nvidia.</description>
+    </item>
+    
+  </channel>
+</rss>
